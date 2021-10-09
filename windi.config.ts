@@ -38,6 +38,10 @@ export default defineConfig({
           },
         },
       },
+      colors: {
+        bearpink: '#982a73',
+        bearpinkdark: '#393185',
+      },
     },
   },
 })

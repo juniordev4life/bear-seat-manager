@@ -14,6 +14,7 @@ specifiers:
   critters: ^0.0.10
   cross-env: ^7.0.3
   eslint: ^7.32.0
+  gantt-schedule-timeline-calendar: ^3.7.9
   https-localhost: ^4.7.0
   markdown-it-link-attributes: ^3.0.0
   markdown-it-prism: ^2.2.1
@@ -37,11 +38,13 @@ specifiers:
   vue-demi: ^0.11.4
   vue-i18n: ^9.1.7
   vue-router: ^4.0.11
+  vue-simple-calendar: ^6.0.1
   vue-tsc: ^0.3.0
 
 dependencies:
   '@vueuse/core': 6.5.3_vue@3.2.18
   '@vueuse/head': 0.6.0_vue@3.2.18
+  gantt-schedule-timeline-calendar: 3.7.9
   nprogress: 0.2.0
   pinia: 2.0.0-rc.9_typescript@4.4.3+vue@3.2.18
   prism-theme-vars: 0.2.2
@@ -49,6 +52,7 @@ dependencies:
   vue-demi: 0.11.4_vue@3.2.18
   vue-i18n: 9.1.7_vue@3.2.18
   vue-router: 4.0.11_vue@3.2.18
+  vue-simple-calendar: 6.0.1
 
 devDependencies:
   '@antfu/eslint-config': 0.9.0_eslint@7.32.0+typescript@4.4.3
@@ -1452,6 +1456,13 @@ packages:
       '@intlify/runtime': 9.1.7
       '@intlify/shared': 9.1.7
 
+  /@neuronet.io/vido/3.2.9:
+    resolution: {integrity: sha512-IxVd4SS2RvhVTSoWbpxLqepPQn+BRKcfg+XToUxd0j0betwziTVZlla+UYJ77qJikoMQLdf2vBhq5oVTRbQv0Q==}
+    dependencies:
+      csstype: 2.6.18
+      lit-html-optimised: 1.3.0
+    dev: false
+
   /@nodelib/fs.scandir/2.1.5:
     resolution: {integrity: sha512-vq24Bq3ym5HEQm2NKCr3yXDwjc7vTsEThRDnkp2DK9p1uqLR+DHurm/NOTo0KG7HYHU7eppKZj3MyqYuMBf62g==}
     engines: {node: '>= 8'}
@@ -2589,6 +2600,10 @@ packages:
     resolution: {integrity: sha512-RSU6Hyeg14am3Ah4VZEmeX8H7kLwEEirXe6aU2IPfKNvhXwTflK5HQRDNI0ypQXoqmm+QPyG2IaPuQE5zMwSIQ==}
     dev: false
 
+  /csstype/3.0.9:
+    resolution: {integrity: sha512-rpw6JPxK6Rfg1zLOYCSwle2GFOOsnjmDYDaBwEcwoOg4qlsIVCN789VkBZDJAGi4T07gI4YSutR43t9Zz4Lzuw==}
+    dev: false
+
   /data-urls/3.0.0:
     resolution: {integrity: sha512-4AefxbTTdFtxDUdh0BuMBs2qJVL25Mow2zlcuuePegQwgD6GEmQao42LLEeksOui8nL4RcNEugIpFP7eRd33xg==}
     engines: {node: '>=12'}
@@ -2597,6 +2612,10 @@ packages:
       whatwg-mimetype: 2.3.0
       whatwg-url: 9.1.0
     dev: true
+
+  /dayjs/1.10.7:
+    resolution: {integrity: sha512-P6twpd70BcPK34K26uJ1KT3wlhpuOAPoMwJzpsIWUxHZ7wpmbdZL/hQqBDfz7hGurYSa5PhzdhDHtt319hL3ig==}
+    dev: false
 
   /debug/2.6.9:
     resolution: {integrity: sha512-bC7ElrdJaJnPbAP+1EotYvqZsb3ecl5wi6Bfi6BJTUcNowp6cvspg0jXznRTKDjm/E7AdgFBVeAPVMNcKGsHMA==}
@@ -2654,6 +2673,10 @@ packages:
   /deep-is/0.1.4:
     resolution: {integrity: sha512-oIPzksmTg4/MriiaYGO+okXDT7ztn/w3Eptv/+gSIdMdKsJo0u4CfYNFJPy+4SKMuCqGw2wxnA+URMg3t8a/bQ==}
     dev: true
+
+  /deep-state-observer/3.25.3:
+    resolution: {integrity: sha512-zAR0THHQSGN5I5pYNCShXr9440oLGlX06RFLCTJXdhH7TzxCi2DMBabU2NK4NNviWp9K+6RbwmQmj567ZXjQ/A==}
+    dev: false
 
   /deepmerge/4.2.2:
     resolution: {integrity: sha512-FJ3UgI4gIl+PHZm53knsuSFpE+nESMr7M4v9QcgB7S63Kj/6WqMiFQJpBBYz1Pt+66bZpP3Q7Lye0Oo9MPKEdg==}
@@ -3445,6 +3468,15 @@ packages:
     resolution: {integrity: sha1-GwqzvVU7Kg1jmdKcDj6gslIHgyc=}
     dev: true
 
+  /gantt-schedule-timeline-calendar/3.7.9:
+    resolution: {integrity: sha512-D5BJI1H80KmwmLkj+o9os8Hmj99//RjV3YLuU1YcOTJwGLiiJCuLxcgIYcEX1J+yM9sTZHgrjPJbWXWilSVzNw==}
+    dependencies:
+      '@neuronet.io/vido': 3.2.9
+      csstype: 3.0.9
+      dayjs: 1.10.7
+      deep-state-observer: 3.25.3
+    dev: false
+
   /gensync/1.0.0-beta.2:
     resolution: {integrity: sha512-3hN7NaskYvMDLQY55gnW3NQ+mesEAepTqlg+VEbj7zzqEMBVNhzcGYYeqFo/TlYz6eQiFcp1HcsCZO+nGgS8zg==}
     engines: {node: '>=6.9.0'}
@@ -4188,6 +4220,10 @@ packages:
     dependencies:
       uc.micro: 1.0.6
     dev: true
+
+  /lit-html-optimised/1.3.0:
+    resolution: {integrity: sha512-wP6JWmnk5VvjliLP1dGKYe9Ip0zKfJHnvjgkVQluxi+zqNZ+LQPEsRMsRaYjhYIefVvZx9mMbFoIx2/KSMRoUQ==}
+    dev: false
 
   /load-json-file/4.0.0:
     resolution: {integrity: sha1-L19Fq5HjMhYjT9U62rZo607AmTs=}
@@ -6299,6 +6335,12 @@ packages:
       vue: ^3.0.0
     dependencies:
       '@vue/devtools-api': 6.0.0-beta.15
+      vue: 3.2.18
+    dev: false
+
+  /vue-simple-calendar/6.0.1:
+    resolution: {integrity: sha512-LEZoOFPuzZo7cESV5/0g27USBv/MMnzdzK6SjrxnbhhgsTKCXJR+oJIb8WPPSZFPpocunUB0FfIYQ7yKggMdHw==}
+    dependencies:
       vue: 3.2.18
     dev: false
 

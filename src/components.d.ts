@@ -4,14 +4,23 @@
 
 declare module 'vue' {
   export interface GlobalComponents {
+    Calendar: typeof import('./components/Calendar.vue')['default']
+    'Calendar copy': typeof import('./components/Calendar copy.vue')['default']
     CarbonCampsite: typeof import('~icons/carbon/campsite')['default']
     CarbonDicomOverlay: typeof import('~icons/carbon/dicom-overlay')['default']
     CarbonLanguage: typeof import('~icons/carbon/language')['default']
     CarbonLogoGithub: typeof import('~icons/carbon/logo-github')['default']
     CarbonMoon: typeof import('~icons/carbon/moon')['default']
+    CarbonPedestrian: typeof import('~icons/carbon/pedestrian')['default']
     CarbonSun: typeof import('~icons/carbon/sun')['default']
+    CarbonWarning: typeof import('~icons/carbon/warning')['default']
     Footer: typeof import('./components/Footer.vue')['default']
+    'Footer copy': typeof import('./components/FooterOriginal.vue')['default']
+    FooterOriginal: typeof import('./components/FooterOriginal.vue')['default']
+    'FooterOriginal copy': typeof import('./components/FooterOriginal copy.vue')['default']
+    NavBar: typeof import('./components/NavBar.vue')['default']
     README: typeof import('./components/README.md')['default']
+    Scheduler: typeof import('./components/Scheduler.vue')['default']
   }
 }
 
