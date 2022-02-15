@@ -1,43 +1,18 @@
 @import './markdown.css';
 
-html,
-body,
-#app {
-  height: 100%;
-  margin: 0;
-  padding: 0;
-}
-
-html.dark {
-  background: #121212;
-}
-
-#nprogress {
-  pointer-events: none;
-}
-
-#nprogress .bar {
-  @apply bg-teal-600 opacity-75;
-
-  position: fixed;
-  z-index: 1031;
-  top: 0;
-  left: 0;
-
-  width: 100%;
-  height: 2px;
-}
-
-.btn {
-  @apply px-4 py-1 rounded inline-block
-    bg-teal-600 text-white cursor-pointer
-    hover:bg-teal-700
-    disabled:cursor-default disabled:bg-gray-600 disabled:opacity-50;
-}
-
-.icon-btn {
-  @apply inline-block cursor-pointer select-none
-    opacity-75 transition duration-200 ease-in-out
-    hover:opacity-100 hover:text-teal-600;
-  font-size: 0.9em;
-}
+@import "_app.css";
+@import "_navbar.css";
+@import "_aside.css";
+@import "_title-bar.css";
+@import "_button.css";
+@import "_hero.css";
+@import "_card.css";
+@import "_icon.css";
+@import "_table.css";
+@import "_progress.css";
+@import "_image.css";
+@import "_modal.css";
+@import "_notifications.css";
+@import "form/_checkbox-radio-switch.css";
+@import "form/_form.css";
+@import "_footer.css";

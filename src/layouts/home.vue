@@ -3,3 +3,9 @@
     <router-view />
   </main>
 </template>
+
+<style>
+  body {
+    padding-left: 0;
+  }
+</style>
