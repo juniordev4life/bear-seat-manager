@@ -17,7 +17,7 @@ specifiers:
   dayjs: ^1.10.7
   eslint: ^7.32.0
   firebase: ^9.4.1
-  gantt-schedule-timeline-calendar: ^3.7.9
+  gantt-schedule-timeline-calendar: ^3.16.1
   https-localhost: ^4.7.0
   markdown-it-link-attributes: ^3.0.0
   markdown-it-prism: ^2.2.1
@@ -53,7 +53,7 @@ dependencies:
   '@vueuse/head': 0.6.0_vue@3.2.18
   dayjs: 1.10.7
   firebase: 9.4.1
-  gantt-schedule-timeline-calendar: 3.7.9
+  gantt-schedule-timeline-calendar: 3.16.1
   nprogress: 0.2.0
   pinia: 2.0.0-rc.9_typescript@4.4.3+vue@3.2.18
   prism-theme-vars: 0.2.2
@@ -1926,11 +1926,10 @@ packages:
       '@intlify/runtime': 9.1.7
       '@intlify/shared': 9.1.7
 
-  /@neuronet.io/vido/3.2.9:
-    resolution: {integrity: sha512-IxVd4SS2RvhVTSoWbpxLqepPQn+BRKcfg+XToUxd0j0betwziTVZlla+UYJ77qJikoMQLdf2vBhq5oVTRbQv0Q==}
+  /@neuronet.io/vido/4.2.0:
+    resolution: {integrity: sha512-Su8Lpk1nOpyJ/lGlKpcj4sa4ymo4uMMzN+1boG05BFyKPOerOAqKnCaruFSOSbKAucBUWFtB6xqVhwgGTC8RQg==}
     dependencies:
-      csstype: 2.6.18
-      lit-html-optimised: 1.3.0
+      lit-html: 2.2.1
     dev: false
 
   /@nodelib/fs.scandir/2.1.5:
@@ -2140,7 +2139,6 @@ packages:
 
   /@types/trusted-types/2.0.2:
     resolution: {integrity: sha512-F5DIZ36YVLE+PN+Zwws4kJogq47hNgX3Nx6WyDJ3kcplxyke3XIzB8uK5n/Lpm1HBsbGzd6nmGehL8cPekP+Tg==}
-    dev: true
 
   /@types/uuid/8.3.3:
     resolution: {integrity: sha512-0LbEEx1zxrYB3pgpd1M5lEhLcXjKJnYghvhTRgaBeUivLHMDM1TzF3IJ6hXU2+8uA4Xz+5BA63mtZo5DjVT8iA==}
@@ -3120,10 +3118,6 @@ packages:
     resolution: {integrity: sha512-RSU6Hyeg14am3Ah4VZEmeX8H7kLwEEirXe6aU2IPfKNvhXwTflK5HQRDNI0ypQXoqmm+QPyG2IaPuQE5zMwSIQ==}
     dev: false
 
-  /csstype/3.0.9:
-    resolution: {integrity: sha512-rpw6JPxK6Rfg1zLOYCSwle2GFOOsnjmDYDaBwEcwoOg4qlsIVCN789VkBZDJAGi4T07gI4YSutR43t9Zz4Lzuw==}
-    dev: false
-
   /data-urls/3.0.0:
     resolution: {integrity: sha512-4AefxbTTdFtxDUdh0BuMBs2qJVL25Mow2zlcuuePegQwgD6GEmQao42LLEeksOui8nL4RcNEugIpFP7eRd33xg==}
     engines: {node: '>=12'}
@@ -3194,8 +3188,8 @@ packages:
     resolution: {integrity: sha512-oIPzksmTg4/MriiaYGO+okXDT7ztn/w3Eptv/+gSIdMdKsJo0u4CfYNFJPy+4SKMuCqGw2wxnA+URMg3t8a/bQ==}
     dev: true
 
-  /deep-state-observer/3.25.3:
-    resolution: {integrity: sha512-zAR0THHQSGN5I5pYNCShXr9440oLGlX06RFLCTJXdhH7TzxCi2DMBabU2NK4NNviWp9K+6RbwmQmj567ZXjQ/A==}
+  /deep-state-observer/5.5.9:
+    resolution: {integrity: sha512-PAE6Cas8j+LS6LNuVNyGPYHJomPKKsdlYyzNfviPS7Cqx5JlQ19K7IF53a2XBzYWg+3hzu+HWnLjg+dnQ9jXvA==}
     dev: false
 
   /deepmerge/4.2.2:
@@ -4026,13 +4020,12 @@ packages:
     resolution: {integrity: sha1-GwqzvVU7Kg1jmdKcDj6gslIHgyc=}
     dev: true
 
-  /gantt-schedule-timeline-calendar/3.7.9:
-    resolution: {integrity: sha512-D5BJI1H80KmwmLkj+o9os8Hmj99//RjV3YLuU1YcOTJwGLiiJCuLxcgIYcEX1J+yM9sTZHgrjPJbWXWilSVzNw==}
+  /gantt-schedule-timeline-calendar/3.16.1:
+    resolution: {integrity: sha512-42xZufYA43T5/Vk5G9+5HCD52C33eRbVe8fKbzOYWlO++s6LYNnIDm4eLICLOM5MBOE6IYYqyIy9rl3NxN8vqA==}
     dependencies:
-      '@neuronet.io/vido': 3.2.9
-      csstype: 3.0.9
+      '@neuronet.io/vido': 4.2.0
       dayjs: 1.10.7
-      deep-state-observer: 3.25.3
+      deep-state-observer: 5.5.9
     dev: false
 
   /gensync/1.0.0-beta.2:
@@ -4800,8 +4793,10 @@ packages:
       uc.micro: 1.0.6
     dev: true
 
-  /lit-html-optimised/1.3.0:
-    resolution: {integrity: sha512-wP6JWmnk5VvjliLP1dGKYe9Ip0zKfJHnvjgkVQluxi+zqNZ+LQPEsRMsRaYjhYIefVvZx9mMbFoIx2/KSMRoUQ==}
+  /lit-html/2.2.1:
+    resolution: {integrity: sha512-AiJ/Rs0awjICs2FioTnHSh+Np5dhYSkyRczKy3wKjp8qjLhr1Ov+GiHrUQNdX8ou1LMuznpIME990AZsa/tR8g==}
+    dependencies:
+      '@types/trusted-types': 2.0.2
     dev: false
 
   /load-json-file/4.0.0:

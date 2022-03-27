@@ -11,6 +11,9 @@ useHead({
     { rel: 'stylesheet', href: 'https://cdn.materialdesignicons.com/4.9.95/css/materialdesignicons.min.css' },
     { rel: 'stylesheet', href: 'https://cdn.jsdelivr.net/npm/sweetalert2@11.3.0/dist/sweetalert2.min.css' },
   ],
+  script: [
+    { src: 'https://cdn.jsdelivr.net/npm/gantt-schedule-timeline-calendar/dist/gstc.wasm.umd.min.js' },
+  ],
 })
 </script>
 
