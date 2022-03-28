@@ -70,8 +70,9 @@ function openModal() {
 function clickAtRow(element, data) {
   function onClick(event) {
     // data variable will be updated in update method below so it will be always actual
+    console.log(event)
     rentObject.value.part = seats.value[data.row.id]
-    rentObject.value.startDate = event.target.classList[1].substr(event.target.classList[1].length - 19).split('T')[0]
+    rentObject.value.startDate = event.target.dataset.gstcid.substr(event.target.dataset.gstcid.length - 19).split('T')[0]
     rentObject.value.endDate = dayjs(rentObject.value.startDate).add(7, 'days').format('YYYY-MM-DD')
     isExistingRentObject.value = false
     openModal()

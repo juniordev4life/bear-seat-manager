@@ -41,6 +41,8 @@ const close = () => {
     background: white;
     min-width: 30%;
     position: relative;
+    max-height: 80vh;
+    overflow-y: scroll;
   }
 
   .modal-animation-enter-active,
