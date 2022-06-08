@@ -136,7 +136,7 @@ function generateItems(rentItems) {
     rowId: 1,
     time: {
       start: GSTC.api.date().startOf('day').valueOf(),
-      end: GSTC.api.date(dayjs().add(6, 'months').format('YYYY-MM-DD')).startOf('day').valueOf(),
+      end: GSTC.api.date(dayjs().add(12, 'months').format('YYYY-MM-DD')).startOf('day').valueOf(),
     },
   }
   return items
@@ -148,6 +148,7 @@ function updateSheduler() {
     element: root.value,
     state,
   })
+  console.log(config)
 }
 
 onMounted(() => {
@@ -158,6 +159,7 @@ onMounted(() => {
     rents.value = snapshot.val()
   })
   setTimeout(() => {
+    const date = GSTC.api.date
     // Configuration object
     config = {
       innerHeight: 600,
@@ -181,7 +183,7 @@ onMounted(() => {
         },
       },
       licenseKey:
-        '====BEGIN LICENSE KEY====\nbKJ12n+3L+cOs1YwoVrIWiYiXzP58Al209qHZ/84lf7Ha3JN3EcZHkfYG84rz1Mu+3HTpqXvh5VOI38SdMntFvWmZIbafZHuZ2Vv7LdhX75/B0lnp0YNSI6Tt/aAw+V3lOdMrD9l2n1P40z+T9BwWFpHTH7ayPMBFHIaBsx6LKiVCYYhXj5MXLtZoG+oUHoOb7qqRg4BjVsv4EBmECIuEQZ4fBUiXY4LR0vQPVl7m4q2i/d7XppGQQ1InaeZhdDH6L5dlV4qyKYoBMVOsRPws7yQiw/DiLDw70EcTZzw7xpeK4+vaGkbeZIVlvLgqLg/MyC6TdyH8a6LdeBpRJpHNw==||U2FsdGVkX19mUZIpnnWI8dwMYZbL9+iFUMMixiKHe4Epx2TRdHaUKH/LNTWPg73DRW2qhxXPJ0XZJhojSPZ8NwOOiZqtfTHAQXmk2aP5BT4=\nAUFhCrrRmOBoJogi9EVh+3KwwtemMmePfrAfj2c/ejPRlhUQmeCsMrVBd6g+APkRClJLaak4f2hqRhXb4Ftr66xdtkkMT80xPkN8pDuXqnAN138SjtFqSOMIKbaRcgN6JseUq+dJK52KXsV82QEwuRe5cOtawSaFtElZbUfO6plNS54CJLE48c+0rso7S0qMvtWI2vFaLiwFOtH+ztQOpVbeJ2YM3DnuS0jufp8LsPpoEbv6qPj6io7/61QRTOfRf7sRMeKrq7McMRflqZ+C6RTrpFbwsLEnIcQrD1MBJY8Q/CfJZo7HnHytM1DRrS3fyGYfbmM896xvqH/bOb8wgw==\n====END LICENSE KEY====',
+        '====BEGIN LICENSE KEY====\nMNS2JhZogAs/bTgyo631Ur1vHf9H/yXLo4Gr2gCWYkgZc5xdEjmZuw8DR7IeWLVdsB758TNOpsU6wqwPEvXRakU529EEDiUkvpaIwqdbJC1RhvEIK3ChSQusP/l2VHXD0YWX/Vk386qcbbqWae3OmvK+KuE3g26Y/u67j/K/+UGN6pTuaqyYfwHBIq67qx+0bcqPtw2ybHf8FYCm6LSEO0Gh9XFvqVPsR5tcAJi7G5OhwLtkfNL6pJGM8Jy4aQTJKLas39R4fPafY53mNFfAEYFQhpnOSrvMrkKN9lcuF/xukIMBQyJh8OXLOtJ1/nYlPBxLkx9Pfder/nzWEIoF7A==||U2FsdGVkX18iRM0MvD62oEcRhUJBEDD5mfjFO5FE4epZ5BCXceiNIlFSaesJMuUpVQ3AVLd6b4SZRangUfUMmSxSNlgHDfgQcxriMlXEobs=\nSDCCftAb1P/p1PMufsdGj2PAh8QQmoehM/MjQUHLXRR9i8oPerVwbox6FtrP+vp0jZCL6JSsGhECnsMB+XnI7g49ST0niIJYVl+m8JfS7rU4C4E8GfU/eHKOQck3Z6MxoTC8tDyiAbzbMw0Sij4HKNdI2ovhqJv4WQgtfXDK7aenFxMeQxBm/dBJqO0RLZMDQW24FgIDr7UplXISRvCstyB70pPz0wYJKotAn6/oHhqBdr9Yk/nt0zXxISenw7UZiFtfh7WHIMHuhO67B3/m4smYrgGdGd7FTCsauwhOl6wrrht+7d6PzKpnQAYrbMrdnu9shgCzJiZW3CJqfKcImg==\n====END LICENSE KEY====',
       plugins: [],
       list: {
         columns: {
