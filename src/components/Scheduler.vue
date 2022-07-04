@@ -17,7 +17,7 @@
 import { onMounted, ref } from 'vue'
 import GSTC from 'gantt-schedule-timeline-calendar'
 import 'gantt-schedule-timeline-calendar/dist/style.css'
-import { ref as refFirebase, onValue, query, orderByChild } from 'firebase/database'
+import { ref as refFirebase, onValue } from 'firebase/database'
 import dayjs from 'dayjs'
 import { database } from '../modules/db'
 
@@ -36,7 +36,7 @@ const rentObject = ref({
   phone: '',
   note: '',
 })
-const seatsData = query(refFirebase(database, `${props.type}`), orderByChild('name'))
+const seatsData = refFirebase(database, `${props.type}`)
 const rents = ref({})
 const rentData = refFirebase(database, `rent-${props.type}`)
 
@@ -136,7 +136,7 @@ function generateItems(rentItems) {
     rowId: 1,
     time: {
       start: GSTC.api.date().startOf('day').valueOf(),
-      end: GSTC.api.date(dayjs().add(12, 'months').format('YYYY-MM-DD')).startOf('day').valueOf(),
+      end: GSTC.api.date(dayjs().add(24, 'months').format('YYYY-MM-DD')).startOf('day').valueOf(),
     },
   }
   return items
@@ -148,7 +148,22 @@ function updateSheduler() {
     element: root.value,
     state,
   })
-  console.log(config)
+}
+
+function isInTheFuture(date) {
+  const today = new Date()
+  today.setHours(23, 59, 59, 998)
+  return date > today
+}
+
+function formatDate(date, format) {
+  const map = {
+    mm: date.getMonth() + 1,
+    dd: date.getDate(),
+    yyyy: date.getFullYear(),
+  }
+
+  return format.replace(/mm|dd|yyyy/gi, matched => map[matched])
 }
 
 onMounted(() => {
@@ -156,9 +171,19 @@ onMounted(() => {
     seats.value = snapshot.val()
   })
   onValue(rentData, (snapshot) => {
-    rents.value = snapshot.val()
+    const rentArray: any = []
+    snapshot.forEach((childSnapshot) => {
+      const childKey = childSnapshot.key
+      if (isInTheFuture(new Date(childSnapshot.val().endDate)))
+        rentArray[childKey] = childSnapshot.val()
+    })
+    rents.value = rentArray
+    // rents.value = snapshot.val()
   })
   setTimeout(() => {
+    const actualDate = formatDate(new Date(), 'yyyy-mm-dd')
+    const toDate = formatDate(new Date(), 'yyyy-mm-dd')
+    const sourceLabel = GSTC.api.GSTCID('label')
     const date = GSTC.api.date
     // Configuration object
     config = {
@@ -206,6 +231,12 @@ onMounted(() => {
       },
       chart: {
         items: generateItems(rents.value),
+        time: {
+          from: date(actualDate).valueOf(),
+          to: date(toDate).valueOf(),
+          autoExpandTimeFromItems: false,
+          zoom: 21,
+        },
       },
       actions: {
         'chart-timeline-grid-row': [clickAtRow],
@@ -213,6 +244,11 @@ onMounted(() => {
       },
     }
     updateSheduler()
+    state.update('config.list.sort', (sort) => {
+      sort.desc = !sort.desc
+      sort.activeColumnId = sourceLabel
+      return sort
+    })
   }, 1000)
 })
 </script>
