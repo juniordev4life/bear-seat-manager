@@ -11,6 +11,12 @@
       />
     </div>
   </Modal>
+  <div class="text-center">
+    <div class="form-check form-switch py-4">
+      <input id="showAllRents" v-model="showAllRents" class="form-check-input appearance-none focus:outline-none cursor-pointer shadow-sm mr-2" type="checkbox" @change="renderSchedule()">
+      <label class="form-check-label inline-block text-gray-800 cursor-pointer" for="showAllRents">Alle Mieten anzeigen</label>
+    </div>
+  </div>
 </template>
 
 <script setup lang="ts">
@@ -41,6 +47,7 @@ const rents = ref({})
 const rentData = refFirebase(database, `rent-${props.type}`)
 
 let gstc, state, config
+const showAllRents = ref(false)
 
 const root = ref(null)
 
@@ -166,25 +173,22 @@ function formatDate(date, format) {
   return format.replace(/mm|dd|yyyy/gi, matched => map[matched])
 }
 
-onMounted(() => {
-  onValue(seatsData, (snapshot) => {
-    seats.value = snapshot.val()
-  })
-  onValue(rentData, (snapshot) => {
-    const rentArray: any = []
-    snapshot.forEach((childSnapshot) => {
-      const childKey = childSnapshot.key
-      if (isInTheFuture(new Date(childSnapshot.val().endDate)))
-        rentArray[childKey] = childSnapshot.val()
-    })
-    rents.value = rentArray
-    // rents.value = snapshot.val()
-  })
+function renderSchedule() {
   setTimeout(() => {
     const actualDate = formatDate(new Date(), 'yyyy-mm-dd')
     const toDate = formatDate(new Date(), 'yyyy-mm-dd')
-    const sourceLabel = GSTC.api.GSTCID('label')
     const date = GSTC.api.date
+    const sourceLabel = GSTC.api.GSTCID('label')
+    const timeConfig = showAllRents.value
+      ? {
+        zoom: 21,
+      }
+      : {
+        from: date(actualDate).valueOf(),
+        to: date(toDate).valueOf(),
+        autoExpandTimeFromItems: false,
+        zoom: 21,
+      }
     // Configuration object
     config = {
       innerHeight: 600,
@@ -231,12 +235,7 @@ onMounted(() => {
       },
       chart: {
         items: generateItems(rents.value),
-        time: {
-          from: date(actualDate).valueOf(),
-          to: date(toDate).valueOf(),
-          autoExpandTimeFromItems: false,
-          zoom: 21,
-        },
+        time: timeConfig,
       },
       actions: {
         'chart-timeline-grid-row': [clickAtRow],
@@ -250,6 +249,24 @@ onMounted(() => {
       return sort
     })
   }, 1000)
+}
+
+onMounted(() => {
+  onValue(seatsData, (snapshot) => {
+    seats.value = snapshot.val()
+  })
+  onValue(rentData, (snapshot) => {
+    const rentArray: any = []
+    snapshot.forEach((childSnapshot) => {
+      const childKey = childSnapshot.key
+      if (isInTheFuture(new Date(childSnapshot.val().endDate)))
+        rentArray[childKey] = childSnapshot.val()
+      rentArray[childKey] = childSnapshot.val()
+    })
+    rents.value = rentArray
+    // rents.value = snapshot.val()
+  })
+  renderSchedule()
 })
 </script>
 
