@@ -11,13 +11,19 @@
       />
     </div>
   </Modal>
+  <div class="text-center">
+    <div class="form-check form-switch py-4">
+      <input id="showAllRents" v-model="showAllRents" class="form-check-input appearance-none focus:outline-none cursor-pointer shadow-sm mr-2" type="checkbox" @change="renderSchedule()">
+      <label class="form-check-label inline-block text-gray-800 cursor-pointer" for="showAllRents">Alle Mieten anzeigen</label>
+    </div>
+  </div>
 </template>
 
 <script setup lang="ts">
 import { onMounted, ref } from 'vue'
 import GSTC from 'gantt-schedule-timeline-calendar'
 import 'gantt-schedule-timeline-calendar/dist/style.css'
-import { ref as refFirebase, onValue, query, orderByChild } from 'firebase/database'
+import { ref as refFirebase, onValue } from 'firebase/database'
 import dayjs from 'dayjs'
 import { database } from '../modules/db'
 
@@ -36,11 +42,12 @@ const rentObject = ref({
   phone: '',
   note: '',
 })
-const seatsData = query(refFirebase(database, `${props.type}`), orderByChild('name'))
+const seatsData = refFirebase(database, `${props.type}`)
 const rents = ref({})
 const rentData = refFirebase(database, `rent-${props.type}`)
 
 let gstc, state, config
+const showAllRents = ref(false)
 
 const root = ref(null)
 
@@ -136,7 +143,7 @@ function generateItems(rentItems) {
     rowId: 1,
     time: {
       start: GSTC.api.date().startOf('day').valueOf(),
-      end: GSTC.api.date(dayjs().add(12, 'months').format('YYYY-MM-DD')).startOf('day').valueOf(),
+      end: GSTC.api.date(dayjs().add(24, 'months').format('YYYY-MM-DD')).startOf('day').valueOf(),
     },
   }
   return items
@@ -148,18 +155,40 @@ function updateSheduler() {
     element: root.value,
     state,
   })
-  console.log(config)
 }
 
-onMounted(() => {
-  onValue(seatsData, (snapshot) => {
-    seats.value = snapshot.val()
-  })
-  onValue(rentData, (snapshot) => {
-    rents.value = snapshot.val()
-  })
+function isInTheFuture(date) {
+  const today = new Date()
+  today.setHours(23, 59, 59, 998)
+  return date > today
+}
+
+function formatDate(date, format) {
+  const map = {
+    mm: date.getMonth() + 1,
+    dd: date.getDate(),
+    yyyy: date.getFullYear(),
+  }
+
+  return format.replace(/mm|dd|yyyy/gi, matched => map[matched])
+}
+
+function renderSchedule() {
   setTimeout(() => {
+    const actualDate = formatDate(new Date(), 'yyyy-mm-dd')
+    const toDate = formatDate(new Date(), 'yyyy-mm-dd')
     const date = GSTC.api.date
+    const sourceLabel = GSTC.api.GSTCID('label')
+    const timeConfig = showAllRents.value
+      ? {
+        zoom: 21,
+      }
+      : {
+        from: date(actualDate).valueOf(),
+        to: date(toDate).valueOf(),
+        autoExpandTimeFromItems: false,
+        zoom: 21,
+      }
     // Configuration object
     config = {
       innerHeight: 600,
@@ -183,7 +212,7 @@ onMounted(() => {
         },
       },
       licenseKey:
-        '====BEGIN LICENSE KEY====\nMNS2JhZogAs/bTgyo631Ur1vHf9H/yXLo4Gr2gCWYkgZc5xdEjmZuw8DR7IeWLVdsB758TNOpsU6wqwPEvXRakU529EEDiUkvpaIwqdbJC1RhvEIK3ChSQusP/l2VHXD0YWX/Vk386qcbbqWae3OmvK+KuE3g26Y/u67j/K/+UGN6pTuaqyYfwHBIq67qx+0bcqPtw2ybHf8FYCm6LSEO0Gh9XFvqVPsR5tcAJi7G5OhwLtkfNL6pJGM8Jy4aQTJKLas39R4fPafY53mNFfAEYFQhpnOSrvMrkKN9lcuF/xukIMBQyJh8OXLOtJ1/nYlPBxLkx9Pfder/nzWEIoF7A==||U2FsdGVkX18iRM0MvD62oEcRhUJBEDD5mfjFO5FE4epZ5BCXceiNIlFSaesJMuUpVQ3AVLd6b4SZRangUfUMmSxSNlgHDfgQcxriMlXEobs=\nSDCCftAb1P/p1PMufsdGj2PAh8QQmoehM/MjQUHLXRR9i8oPerVwbox6FtrP+vp0jZCL6JSsGhECnsMB+XnI7g49ST0niIJYVl+m8JfS7rU4C4E8GfU/eHKOQck3Z6MxoTC8tDyiAbzbMw0Sij4HKNdI2ovhqJv4WQgtfXDK7aenFxMeQxBm/dBJqO0RLZMDQW24FgIDr7UplXISRvCstyB70pPz0wYJKotAn6/oHhqBdr9Yk/nt0zXxISenw7UZiFtfh7WHIMHuhO67B3/m4smYrgGdGd7FTCsauwhOl6wrrht+7d6PzKpnQAYrbMrdnu9shgCzJiZW3CJqfKcImg==\n====END LICENSE KEY====',
+        '====BEGIN LICENSE KEY====\nntNXXzHB7d7HNP+e08hVELMlMhZczmqsbuexv4qO1XDjW58o8O/QYGjD1Z5FSwpqExOD+Hwy/6lVOfZxucMQsKnfqM3UOXHS/ac1ElAGhUwjeHDrd6KyM2gJzHyFRfHMaFAiJ3OovRdBG3kMGJ3y7Kfs5MxoRcgVIqi0R38r230Ad7CfbU3dkzOPXV6UAe/HosFqJfd9cekwMbxc/BXn4YbF+CnwdzjI1tDrhAZlU4tMjzvjx6v/5Zqjdpc4YFSRJ52BbkIlcY/Jy5oNrWSpb3J4NtFOXpbRE2AQQ41o1RKaBxParI6mTy/oQdJf3VzzXiyjnnQThd1BVGzFTQ072A==||U2FsdGVkX1+KBlgpvSXTVeTXDREpVhhYEi+/zRRqgM3K0uXGnHGL4w9eTtGom1TlHw7rN0xacvwgQzOqI6XI/KM4yQaeLS4lV/SU0cy8bb0=\nNTkuDcFoWp6DnFZUKTBU/jK2yComGf3kQtBPcmbwyKr8sqQxCkQhGJEWuadOnbDUrr/xDUlSkleApzDHtVgQx99Es/oBbR2D9P9kjuYmQAZZvY6MghGaUgfyaSnyasxIJeHsCZJPo5XSFDgQszpzpAr4wJdD+hG/caXnrzd6Y14FnUJpZslB+B7ndFtWaFKgelRcPSuPuOVjblXgwgFx8vWv1YzZ9NvyIz3BJY/V9exjvr/Q8UGR4v7a7dWegwCx5emqdsrsti99nBKthnLOIfoyqsfXwaep4nc6JwmAmB2DMO46rya4JLGFPEdKytTLNeb35AQs9lSICLNfhmiWdQ==\n====END LICENSE KEY====',
       plugins: [],
       list: {
         columns: {
@@ -206,6 +235,7 @@ onMounted(() => {
       },
       chart: {
         items: generateItems(rents.value),
+        time: timeConfig,
       },
       actions: {
         'chart-timeline-grid-row': [clickAtRow],
@@ -213,7 +243,30 @@ onMounted(() => {
       },
     }
     updateSheduler()
+    state.update('config.list.sort', (sort) => {
+      sort.desc = !sort.desc
+      sort.activeColumnId = sourceLabel
+      return sort
+    })
   }, 1000)
+}
+
+onMounted(() => {
+  onValue(seatsData, (snapshot) => {
+    seats.value = snapshot.val()
+  })
+  onValue(rentData, (snapshot) => {
+    const rentArray: any = []
+    snapshot.forEach((childSnapshot) => {
+      const childKey = childSnapshot.key
+      if (isInTheFuture(new Date(childSnapshot.val().endDate)))
+        rentArray[childKey] = childSnapshot.val()
+      rentArray[childKey] = childSnapshot.val()
+    })
+    rents.value = rentArray
+    // rents.value = snapshot.val()
+  })
+  renderSchedule()
 })
 </script>
 
