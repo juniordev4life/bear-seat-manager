@@ -6,16 +6,16 @@ declare module 'vue' {
   export interface GlobalComponents {
     CarbonCampsite: typeof import('~icons/carbon/campsite')['default']
     CarbonWarning: typeof import('~icons/carbon/warning')['default']
-    EquipmentDetails: typeof import('C:/Users/mslusalek/Documents/GitHub/juniordev4life/bear-seat-manager/src/components/EquipmentDetails.vue')['default']
-    EquipmentList: typeof import('C:/Users/mslusalek/Documents/GitHub/juniordev4life/bear-seat-manager/src/components/EquipmentList.vue')['default']
-    FooterOriginal: typeof import('C:/Users/mslusalek/Documents/GitHub/juniordev4life/bear-seat-manager/src/components/FooterOriginal.vue')['default']
-    Modal: typeof import('C:/Users/mslusalek/Documents/GitHub/juniordev4life/bear-seat-manager/src/components/Modal.vue')['default']
-    README: typeof import('C:/Users/mslusalek/Documents/GitHub/juniordev4life/bear-seat-manager/src/components/README.md')['default']
-    RentDetails: typeof import('C:/Users/mslusalek/Documents/GitHub/juniordev4life/bear-seat-manager/src/components/RentDetails.vue')['default']
-    RentScheduler: typeof import('C:/Users/mslusalek/Documents/GitHub/juniordev4life/bear-seat-manager/src/components/RentScheduler.vue')['default']
-    Scheduler: typeof import('C:/Users/mslusalek/Documents/GitHub/juniordev4life/bear-seat-manager/src/components/Scheduler.vue')['default']
-    SeatDetails: typeof import('C:/Users/mslusalek/Documents/GitHub/juniordev4life/bear-seat-manager/src/components/SeatDetails.vue')['default']
-    SeatList: typeof import('C:/Users/mslusalek/Documents/GitHub/juniordev4life/bear-seat-manager/src/components/SeatList.vue')['default']
+    EquipmentDetails: typeof import('./components/EquipmentDetails.vue')['default']
+    EquipmentList: typeof import('./components/EquipmentList.vue')['default']
+    FooterOriginal: typeof import('./components/FooterOriginal.vue')['default']
+    Modal: typeof import('./components/Modal.vue')['default']
+    README: typeof import('./components/README.md')['default']
+    RentDetails: typeof import('./components/RentDetails.vue')['default']
+    RentScheduler: typeof import('./components/RentScheduler.vue')['default']
+    Scheduler: typeof import('./components/Scheduler.vue')['default']
+    SeatDetails: typeof import('./components/SeatDetails.vue')['default']
+    SeatList: typeof import('./components/SeatList.vue')['default']
   }
 }
 
