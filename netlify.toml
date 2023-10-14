@@ -15,6 +15,3 @@
   for = '/*'
   [headers.values]
     Content-Security-Policy = "default-src 'self'; connect-src https://gstc.neuronet.io;"
-  for = "/manifest.webmanifest"
-  [headers.values]
-    Content-Type = "application/manifest+json"
