@@ -14,4 +14,4 @@
 [[headers]]
   for = '/*'
   [headers.values]
-    Content-Security-Policy = "default-src 'self' gstc.neuronet.io *.neuronet.io cdn.materialdesignicons.com cdn.jsdelivr.net identitytoolkit.googleapis.com; connect-src gstc.neuronet.io *.neuronet.io cdn.materialdesignicons.com cdn.jsdelivr.net identitytoolkit.googleapis.com"
+    Content-Security-Policy = "default-src 'self' gstc.neuronet.io cdn.materialdesignicons.com cdn.jsdelivr.net *.googleapis.com; connect-src gstc.neuronet.io cdn.materialdesignicons.com cdn.jsdelivr.net *.googleapis.com"
