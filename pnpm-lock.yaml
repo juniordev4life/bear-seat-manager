@@ -21,7 +21,7 @@ dependencies:
     specifier: ^9.4.1
     version: 9.4.1
   gantt-schedule-timeline-calendar:
-    specifier: ^3.16.1
+    specifier: 3.16.1
     version: 3.16.1
   nprogress:
     specifier: ^0.2.0
