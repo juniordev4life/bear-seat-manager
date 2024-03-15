@@ -54,6 +54,14 @@
               <span class="menu-item-label">Babyschale</span>
             </a>
           </li>
+          <!--
+          <li>
+            <a href="/rent/baby-seats-list">
+              <span class="icon"><i class="mdi mdi-baby"></i></span>
+              <span class="menu-item-label">Babyschale Liste</span>
+            </a>
+          </li>
+          -->
           <li>
             <a href="/rent/equipments">
               <span class="icon"><i class="mdi mdi-tag"></i></span>

@@ -1999,10 +1999,10 @@ packages:
       '@intlify/runtime': 9.1.7
       '@intlify/shared': 9.1.7
 
-  /@neuronet.io/vido@4.2.0:
-    resolution: {integrity: sha512-Su8Lpk1nOpyJ/lGlKpcj4sa4ymo4uMMzN+1boG05BFyKPOerOAqKnCaruFSOSbKAucBUWFtB6xqVhwgGTC8RQg==}
+  /@neuronet.io/vido@4.2.15:
+    resolution: {integrity: sha512-Ye3PSvsfU0e/uxhQC5XC5DwI/RS2/h84zV/S6MbdhyQoQBrBleIFf63TWW8L83ntM1J0z6UN8dZ9ENinCB5CcQ==}
     dependencies:
-      lit-html: 2.2.1
+      lit-html: 2.8.0
     dev: false
 
   /@nodelib/fs.scandir@2.1.5:
@@ -3200,6 +3200,10 @@ packages:
     resolution: {integrity: sha512-P6twpd70BcPK34K26uJ1KT3wlhpuOAPoMwJzpsIWUxHZ7wpmbdZL/hQqBDfz7hGurYSa5PhzdhDHtt319hL3ig==}
     dev: false
 
+  /dayjs@1.11.10:
+    resolution: {integrity: sha512-vjAczensTgRcqDERK0SR2XMwsF/tSvnvlv6VcF2GIhg6Sx4yOIt/irsr1RDJsKiIyBzJDpCoXiWWq28MqH2cnQ==}
+    dev: false
+
   /debug@2.6.9:
     resolution: {integrity: sha512-bC7ElrdJaJnPbAP+1EotYvqZsb3ecl5wi6Bfi6BJTUcNowp6cvspg0jXznRTKDjm/E7AdgFBVeAPVMNcKGsHMA==}
     peerDependencies:
@@ -3267,8 +3271,8 @@ packages:
     resolution: {integrity: sha512-oIPzksmTg4/MriiaYGO+okXDT7ztn/w3Eptv/+gSIdMdKsJo0u4CfYNFJPy+4SKMuCqGw2wxnA+URMg3t8a/bQ==}
     dev: true
 
-  /deep-state-observer@5.5.9:
-    resolution: {integrity: sha512-PAE6Cas8j+LS6LNuVNyGPYHJomPKKsdlYyzNfviPS7Cqx5JlQ19K7IF53a2XBzYWg+3hzu+HWnLjg+dnQ9jXvA==}
+  /deep-state-observer@5.5.13:
+    resolution: {integrity: sha512-Ai55DB6P/k/EBgC4jNlYqIgp8e6Mzl7E/4vzIDMfrJ+TnCFmeA7TySaa3BapioDz4Cr6dYamVI4Mx2FMtpfM4w==}
     dev: false
 
   /deepmerge@4.2.2:
@@ -4136,9 +4140,9 @@ packages:
   /gantt-schedule-timeline-calendar@3.16.1:
     resolution: {integrity: sha512-42xZufYA43T5/Vk5G9+5HCD52C33eRbVe8fKbzOYWlO++s6LYNnIDm4eLICLOM5MBOE6IYYqyIy9rl3NxN8vqA==}
     dependencies:
-      '@neuronet.io/vido': 4.2.0
-      dayjs: 1.10.7
-      deep-state-observer: 5.5.9
+      '@neuronet.io/vido': 4.2.15
+      dayjs: 1.11.10
+      deep-state-observer: 5.5.13
     dev: false
 
   /gensync@1.0.0-beta.2:
@@ -4906,8 +4910,8 @@ packages:
       uc.micro: 1.0.6
     dev: true
 
-  /lit-html@2.2.1:
-    resolution: {integrity: sha512-AiJ/Rs0awjICs2FioTnHSh+Np5dhYSkyRczKy3wKjp8qjLhr1Ov+GiHrUQNdX8ou1LMuznpIME990AZsa/tR8g==}
+  /lit-html@2.8.0:
+    resolution: {integrity: sha512-o9t+MQM3P4y7M7yNzqAyjp7z+mQGa4NS4CxiyLqFPyFWyc4O+nodLrkrxSaCTrla6M5YOLaT3RpbbqjszB5g3Q==}
     dependencies:
       '@types/trusted-types': 2.0.2
     dev: false
