@@ -4,6 +4,7 @@
 
 declare module 'vue' {
   export interface GlobalComponents {
+    BabySeatList: typeof import('./components/BabySeatList.vue')['default']
     CarbonCampsite: typeof import('~icons/carbon/campsite')['default']
     CarbonWarning: typeof import('~icons/carbon/warning')['default']
     EquipmentDetails: typeof import('./components/EquipmentDetails.vue')['default']
